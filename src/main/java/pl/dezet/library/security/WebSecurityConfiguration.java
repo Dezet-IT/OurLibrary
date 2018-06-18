@@ -77,7 +77,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .permitAll()
                 .and()
-                // Setting the filter for the URL "/google/login".
+                // Setting the filter for the URL "/login".
                 .addFilterAt(filter(), BasicAuthenticationFilter.class)
                 .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
