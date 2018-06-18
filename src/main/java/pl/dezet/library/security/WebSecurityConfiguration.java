@@ -2,6 +2,7 @@ package pl.dezet.library.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
 import org.springframework.core.annotation.Order;
@@ -21,7 +22,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  * Modifying or overriding the default spring boot security.
  */
 @Configurable
-@EnableWebSecurity
+@EnableOAuth2Sso
 @Order(99)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
