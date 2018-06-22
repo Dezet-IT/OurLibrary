@@ -1,36 +1,38 @@
 package pl.dezet.library.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
+@Table(name = "user")
 public class User {
-
-    @Column(name = "id")
-    @GeneratedValue
     @Id
-    private String id;
-    private String userName;
+    @GeneratedValue
+    private int id;
+    private String fullName;
     private String email;
-    private String password;
+    private String principalId;
+    private String photo;
+    private LocalDateTime created;
+    private LocalDateTime lastLogin;
+    @Enumerated(EnumType.STRING)
+    private UserLoginType loginType;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -41,38 +43,43 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPrincipalId() {
+        return principalId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrincipalId(String principalId) {
+        this.principalId = principalId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(userName, user.userName) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(password, user.password);
+    public String getPhoto() {
+        return photo;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, userName, email, password);
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public LocalDateTime getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(LocalDateTime lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public UserLoginType getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(UserLoginType loginType) {
+        this.loginType = loginType;
     }
 }

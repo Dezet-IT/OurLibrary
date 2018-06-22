@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="fragments/layout">
+<head>
+    <title>Main page</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1 id="content">{{ message }}</h1>
+</div>
+
+<th:block layout:fragment="script">
+    <script src="js/index.js"></script>
+</th:block>
+</body>
+</html>

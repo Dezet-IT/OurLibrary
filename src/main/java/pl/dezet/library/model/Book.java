@@ -1,24 +1,18 @@
 package pl.dezet.library.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "book")
 public class Book {
 
     @Column(name = "id")
     @Id
     @GeneratedValue
-    private Long id;
-    @NotEmpty
+    private String id;
     private String author;
-    @NotEmpty
     private String name;
-    @NotEmpty
     private String description;
     private boolean isAvailible;
 
@@ -46,11 +40,11 @@ public class Book {
         this.description = description;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

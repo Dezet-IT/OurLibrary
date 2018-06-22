@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/layout">
+<head>
+    <title>Teams</title>
+
+    <th:block layout:fragment="style">
+        <link rel="stylesheet" th:href="@{../css/team/team.css}" />
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content" id="team-list">
+    <div class="page-header">
+        <div class="btn-toolbar pull-right">
+            <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#myModal">Add New</button>
+        </div>
+        <h2>Books</h2>
+    </div>
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${team.name}"></td>
+                <td><img class="crest" th:src="${team.crestPhoto}"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="#" th:action="@{/team/add}" th:object="${newTeam}" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add Team</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <label th:for="*{name}">Name</label>
+                            <input type="text" th:field="*{name}"/>
+                        </p>
+                        <p>
+                            <label th:for="*{countryId}">Country</label>
+                            <select th:field="*{countryId}">
+                                <option th:each="country : ${allCountries}"
+                                        th:value="${country.id}"
+                                        th:text="${country.name}">Country</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label th:for="*{crestPhoto}">Crest URL</label>
+                            <input type="text" th:field="*{crestPhoto}"/>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
