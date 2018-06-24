@@ -1,85 +1,96 @@
 package pl.dezet.library.model;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String fullName;
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String principalId;
-    private String photo;
-    private LocalDateTime created;
-    private LocalDateTime lastLogin;
-    @Enumerated(EnumType.STRING)
-    private UserLoginType loginType;
+    private String title;
+    private String country;
+    private String password;
+    private String passwordConfirm;
+    private String provider;
+    private String image;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPrincipalId() {
-        return principalId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPrincipalId(String principalId) {
-        this.principalId = principalId;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPhoto() {
-        return photo;
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public LocalDateTime getLastLogin() {
-        return lastLogin;
+    public String getCountry() {
+        return country;
     }
 
-    public void setLastLogin(LocalDateTime lastLogin) {
-        this.lastLogin = lastLogin;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public UserLoginType getLoginType() {
-        return loginType;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLoginType(UserLoginType loginType) {
-        this.loginType = loginType;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 }
