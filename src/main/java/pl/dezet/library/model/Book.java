@@ -10,11 +10,13 @@ public class Book {
     @Column(name = "id")
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
     private String author;
     private String name;
     private String description;
     private boolean isAvailible;
+//    @OneToOne
+//    private BookDetails bookDetails;
 
     public String getAuthor() {
         return author;
@@ -40,11 +42,11 @@ public class Book {
         this.description = description;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,6 +57,14 @@ public class Book {
     public void setAvailible(boolean availible) {
         isAvailible = availible;
     }
+
+/*    public BookDetails getBookDetails() {
+        return bookDetails;
+    }
+
+    public void setBookDetails(BookDetails bookDetails) {
+        this.bookDetails = bookDetails;
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -79,6 +89,8 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", isAvailible=" + isAvailible +
+//                ", bookDetails=" + bookDetails +
                 '}';
     }
 }
