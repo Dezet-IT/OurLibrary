@@ -1,16 +1,15 @@
 package pl.dezet.library.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.security.Principal;
+import pl.dezet.library.model.User;
 
 @RestController
+@RequestMapping("api/v1")
 public class UserController {
-
-    @RequestMapping(value = {"/user"})
-    public Principal user(Principal principal) {
+    @RequestMapping("user")
+    public User user(@AuthenticationPrincipal User principal) {
         return principal;
     }
-
 }
